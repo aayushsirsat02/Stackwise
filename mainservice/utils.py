@@ -32,7 +32,7 @@ def call_api(user_message):
         response_json = response.json()
         ai_content = response_json['choices'][0]['message']['content']
         htmlready_content = markdown.markdown(ai_content)
-        print(ai_content)
+        
         return htmlready_content
     except requests.exceptions.RequestException as e :
         print(f"API Request failed: {e}")
