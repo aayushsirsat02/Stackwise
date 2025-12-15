@@ -1,0 +1,157 @@
+/* --- Global Styles and Typography --- */
+:root {
+    --color-primary: #007bff; /* Blue */
+    --color-secondary: #6c757d; /* Gray */
+    --color-background: #f4f6f9; /* Light background */
+    --color-surface: #ffffff; /* White card */
+    --color-text: #343a40; /* Dark text */
+    --color-border: #dee2e6;
+    --radius: 8px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    margin: 0;
+    padding: 20px;
+}
+
+/* --- Main Form Container Layout --- */
+.main-form-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    background: var(--color-surface);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 20px;
+}
+
+.form-section-title {
+    margin-bottom: 25px;
+}
+
+.form-section-title h2 {
+    color: var(--color-primary);
+    margin-bottom: 5px;
+}
+
+/* --- FLEXBOX GRID LAYOUT --- */
+.flex-form-grid {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    gap: 20px; /* Space between flex items */
+}
+
+.form-group {
+    /* Flex-basis controls the minimum size; flex-grow allows it to fill space. */
+    /* This makes roughly 3 columns on large screens, 2 on medium, 1 on small. */
+    flex: 1 1 calc(33.33% - 20px); 
+    display: flex; /* Apply flex to the group itself to align label/input */
+    flex-direction: column;
+}
+
+/* Make the textarea/notes field and auth selection span the full width */
+.form-group.full-width {
+    flex: 1 1 100%;
+}
+
+/* --- Input and Select Styling --- */
+label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-text);
+    display: block; /* Important for flex-direction: column */
+    font-size: 0.95em;
+}
+
+select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background-color: var(--color-background);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 1em;
+    min-height: 45px; /* Consistent height */
+}
+
+select:focus, textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    outline: none;
+    background-color: var(--color-surface);
+}
+
+/* --- Button Styling --- */
+.submit-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 30px;
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.submit-button:hover {
+    background-color: #0056b3; /* Darker blue */
+}
+
+.submit-button:active {
+    transform: scale(0.99);
+}
+
+/* --- Result Section Styling --- */
+.result-separator {
+    margin: 40px 0;
+    border: 0;
+    border-top: 1px dashed var(--color-border);
+}
+
+.ai-result-section {
+    padding: 30px;
+    background-color: #e9f7ff; /* Light blue background for emphasis */
+    border-left: 5px solid var(--color-primary);
+    border-radius: var(--radius);
+}
+
+.ai-result-section h3 {
+    margin-top: 0;
+    color: #004085;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .flex-form-grid {
+        gap: 15px;
+    }
+    .form-group {
+        /* On small screens, make items stack in 1 column (50% - gap/2) */
+        flex: 1 1 calc(50% - 15px); 
+    }
+    .main-form-container {
+        padding: 20px;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .form-group {
+        /* On smallest screens, stack all items in a single column (100%) */
+        flex: 1 1 100%; 
+    }
+}

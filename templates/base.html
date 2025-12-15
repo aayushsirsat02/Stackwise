@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}StackWise{% endblock %}</title>
+
+    <!-- Later you can add CSS like this -->
+ 
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="icon" type="image/x-icon" href="/static/images/icons8-ai-100.png">
+
+    
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <h1>StackWise</h1>
+        <nav>
+    <a href="/">Home</a>
+
+    {% if user.is_authenticated %}
+        <a href="/mainservice/service/">Dashboard</a>
+        <a href="{% url 'logout_view' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login_view' %}">Login</a>
+        <a href="{% url 'register_view' %}">Register</a>
+    {% endif %}
+</nav>
+    </header>
+
+    <hr>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        <!-- Child templates will inject content here -->
+        {% endblock %}
+    </main>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 StackWise. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

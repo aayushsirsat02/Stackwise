@@ -1,0 +1,51 @@
+
+{% extends "base.html" %}
+
+
+{% block title %}Login | StackWise{% endblock %}
+<header>
+        <h1>StackWise</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/accounts/login/">Login</a>
+            <a href="/accounts/register/">Register</a>
+        </nav>
+    </header>
+
+
+{% block content %}
+
+
+<h2>Login</h2>
+
+<h4>{{succes}}</h4>
+
+<form method="post">
+    {% csrf_token %}
+
+    <div>
+        <label for="email">Email</label><br>
+        <input type="email" name="email" id="email" required>
+    </div>
+
+    <br>
+
+    <div>
+        <label for="password">Password</label><br>
+        <input type="password" name="password" id="password" required>
+    </div>
+
+    <br>
+    <h3>{{error}}</h3>
+    <br>
+
+    <button type="submit">Login</button>
+</form>
+
+
+<p>
+    Don’t have an account?
+    <a href="/accounts/register/">Register here</a>
+</p>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Register | StackWise{% endblock %}
+
+{% block content %}
+<h2>Create Account</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    <div>
+        <label>Email</label><br>
+        <input type="email" name="email" required>
+    </div>
+
+    <div>
+        <label>Password</label><br>
+        <input type="password" name="password1" required>
+    </div>
+
+    <div>
+        <label>Confirm Password</label><br>
+        <input type="password" name="password2" required>
+    </div>
+    <h4>{{error}}</h4>
+
+    <button type="submit">Register</button>
+</form>
+{% endblock %}
